@@ -1,0 +1,73 @@
+"use strict"
+const ID = '0c9dd64498525695697df092add69bfb';
+const url = `https://api.openweathermap.org/data/2.5/weather?&appid=${ID}&units=metric`;
+
+const body = document.querySelector('body');
+const inputContainer = document.createElement('div');
+body.appendChild(inputContainer);
+inputContainer.classList.add('input-container');
+const input = document.createElement('input');
+input.placeholder = 'Enter city name here...';
+inputContainer.appendChild(input);
+const searchBtn = document.createElement('button');
+searchBtn.classList.add('search');
+inputContainer.appendChild(searchBtn).textContent = 'Search';
+const array = [];
+const logo = document.createElement('img');
+
+
+
+function getCityData(cityName) {
+
+    return fetch(`${url}&q=${cityName}`)
+
+        .then((response) => {
+            return response.json();
+        })
+        .then((json) => {
+            console.log(json)
+            return showCityData(json);
+        })
+        .catch((error) => {
+            console.log(error);
+            return alert('Nothing found. Please check your city name'),
+                window.location.reload();
+        })
+};
+
+searchBtn.addEventListener('click', (event) => {
+    if (array.indexOf(input.value) === -1) {
+        array.push(input.value);
+        console.log(array);
+        return getCityData(input.value);
+    } else if (array.indexOf(input.value) >= 0) {
+        return alert(`${input.value} is already added!`);
+    }
+});
+
+function showCityData(data) {
+
+    const cityData = document.createElement('div');
+    cityData.classList.add('card-container');
+    body.appendChild(cityData);
+    const exiteBtn = document.createElement('button');
+    exiteBtn.classList.add('exite');
+
+
+    cityData.appendChild(exiteBtn).textContent = 'X';
+
+    logo.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
+
+    exiteBtn.addEventListener('click', (event) => {
+        console.log('removed');
+    });
+
+    return cityData.innerHTML += `<img src="http://openweathermap.org/img/wn/${data.weather[0].icon}.png"></img>
+    
+    <h2>${data.name}</h2>
+    <p> Temperature: ${data.main.temp} °C</p>
+    <p> Description: ${data.weather[0].description}</p>
+    <p> Humidity: ${data.main.humidity} %</p>
+    <p> Retrieved on ${data.timezone}</p>`
+
+};

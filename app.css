@@ -1,0 +1,102 @@
+body {
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  -webkit-font-smoothing: antialiased;
+  background: #f2f3f5;
+  margin: 0 auto;
+}
+body .nav {
+  font-size: 12px;
+  text-shadow: #e2dede 3px 3px;
+  position: sticky;
+  border-bottom: 1px solid #99bbda;
+  transition: all 0.4s;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background: #fff;
+  color: #99bbda;
+  padding-left: 50px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+body .input-container {
+  margin-top: 90px;
+  margin-bottom: 90px;
+  display: flex;
+  justify-content: center;
+}
+body .input-container input {
+  font-size: 40px;
+  display: inline-block;
+  text-align: start;
+  cursor: text;
+  margin: 0 50px 0 50px;
+  padding: 15px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #99bbda;
+  color: #99bbda;
+}
+body .input-container ::placeholder {
+  color: #99bbda;
+}
+body .input-container .search {
+  width: 100px;
+  border-radius: 12px;
+  background: transparent;
+  border: 2px solid #99bbda;
+  color: #99bbda;
+  font-size: 20px;
+  text-shadow: #e2dede 3px 3px;
+}
+body .input-container .search:hover {
+  background: #99bbda;
+  color: #f2f3f5;
+  text-shadow: none;
+}
+body .card-container {
+  width: 200px;
+  margin: 50px;
+  padding: 20px;
+  display: inline-block;
+  background: #99bbda;
+  color: white;
+  box-shadow: 5px 10px 10px 5px #b3b1b1;
+}
+body .card-container .exite {
+  float: right;
+  background: transparent;
+  border: solid 1px white;
+  width: 30px;
+  height: 25px;
+  text-align: center;
+  color: white;
+}
+body .card-container .exite:hover {
+  background: transparent;
+  border: solid 2px red;
+  color: red;
+}
+body .card-container:hover {
+  transform: scale(1.2);
+  transition: ease-in-out 1s;
+}
+
+@media (max-width: 776px) {
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .input-container .search {
+    height: 70px;
+    margin-top: 35px;
+  }
+
+  .card-container {
+    display: block;
+  }
+}
+
+/*# sourceMappingURL=app.css.map */
