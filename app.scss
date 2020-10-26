@@ -4,8 +4,9 @@ body {
     -webkit-font-smoothing: antialiased;
     background: #f2f3f5;
     margin: 0 auto;
-    
-
+    height: auto;
+    // background: linear-gradient(-90deg, rgb(84, 40, 245),  rgb(156, 94, 197))
+     
     .nav {
         font-size: 12px;
         text-shadow: rgb(226, 222, 222) 3px 3px;
@@ -42,6 +43,8 @@ body {
             border-bottom: 1px solid rgb(153, 187, 218);
             color: rgb(153, 187, 218);
         }
+      
+      
         ::placeholder {
             color: rgb(153, 187, 218);
         }
@@ -60,6 +63,7 @@ body {
             color: #f2f3f5;
             text-shadow: none;
         }
+       
 
     
     }
@@ -68,9 +72,12 @@ body {
         margin: 50px;
         padding: 20px;
         display: inline-block;
-        background: rgb(153, 187, 218);
+        background: linear-gradient(-90deg, rgb(153, 187, 218),  rgb(192, 204, 245));
+
         color: white;
         box-shadow: 5px 10px 10px 5px rgb(179, 177, 177);
+        border-radius: 10px;
+      
 
        .exite {
            float: right;
@@ -89,6 +96,7 @@ body {
         border: solid 2px red;
         color: red;
        }
+       
     }
     .card-container:hover {
    
@@ -96,26 +104,38 @@ body {
         transition: ease-in-out 1s ;
       
     }
-}
-@media (max-width: 776px) {
-
     
-  .input-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      .search {
-          height: 70px;
-        margin-top: 35px ;
-      }
-  }
-
-
-  .card-container {
-    display: block;
-    
-
-
-
 }
+@media (min-width: 776px) {
+
+    body {
+        display: block;
+        align-items: center;
+
+    }
+}
+  
+
+
+@media (max-width: 774px) {
+    body {
+        display: block;
+        align-items: center;
+        text-align: center;
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .search {
+                height: 70px;
+              margin-top: 35px ;
+            }
+        
+        
+        }
+        .card-container  {
+            width: 400px;
+           
+        }
+    }
 }

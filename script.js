@@ -3,6 +3,9 @@ const ID = '0c9dd64498525695697df092add69bfb';
 const url = `https://api.openweathermap.org/data/2.5/weather?&appid=${ID}&units=metric`;
 
 const body = document.querySelector('body');
+const nav = document.createElement('nav');
+nav.classList.add('nav');
+body.appendChild(nav).innerHTML = `<nav><h1><i class="fas fa-cloud-sun-rain"></i> Weather app</h1></nav>`
 const inputContainer = document.createElement('div');
 body.appendChild(inputContainer);
 inputContainer.classList.add('input-container');
@@ -14,6 +17,8 @@ searchBtn.classList.add('search');
 inputContainer.appendChild(searchBtn).textContent = 'Search';
 const array = [];
 const logo = document.createElement('img');
+
+
 
 
 
@@ -35,11 +40,13 @@ function getCityData(cityName) {
         })
 };
 
+
+
 searchBtn.addEventListener('click', (event) => {
     if (array.indexOf(input.value) === -1) {
         array.push(input.value);
         console.log(array);
-        return getCityData(input.value);
+        return getCityData(input.value), input.value = '';
     } else if (array.indexOf(input.value) >= 0) {
         return alert(`${input.value} is already added!`);
     }
@@ -59,15 +66,17 @@ function showCityData(data) {
     logo.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
 
     exiteBtn.addEventListener('click', (event) => {
-        console.log('removed');
+        return cityData.remove(),
+            console.log('removed');
     });
 
-    return cityData.innerHTML += `<img src="http://openweathermap.org/img/wn/${data.weather[0].icon}.png"></img>
+    return cityData.insertAdjacentHTML('beforeend', `<img src="http://openweathermap.org/img/wn/${data.weather[0].icon}.png"></img>
     
-    <h2>${data.name}</h2>
+    <h2>${data.name} ${data.sys.country}</h2>
     <p> Temperature: ${data.main.temp} °C</p>
     <p> Description: ${data.weather[0].description}</p>
     <p> Humidity: ${data.main.humidity} %</p>
-    <p> Retrieved on ${data.timezone}</p>`
+    <p> Wind speed: ${data.wind.speed} m/s</p> 
+    <p> <b>${Date()} </b></p>`)
 
 };

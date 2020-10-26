@@ -4,6 +4,7 @@ body {
   -webkit-font-smoothing: antialiased;
   background: #f2f3f5;
   margin: 0 auto;
+  height: auto;
 }
 body .nav {
   font-size: 12px;
@@ -60,9 +61,10 @@ body .card-container {
   margin: 50px;
   padding: 20px;
   display: inline-block;
-  background: #99bbda;
+  background: linear-gradient(-90deg, #99bbda, #c0ccf5);
   color: white;
   box-shadow: 5px 10px 10px 5px #b3b1b1;
+  border-radius: 10px;
 }
 body .card-container .exite {
   float: right;
@@ -83,19 +85,29 @@ body .card-container:hover {
   transition: ease-in-out 1s;
 }
 
-@media (max-width: 776px) {
-  .input-container {
+@media (min-width: 776px) {
+  body {
+    display: block;
+    align-items: center;
+  }
+}
+@media (max-width: 774px) {
+  body {
+    display: block;
+    align-items: center;
+    text-align: center;
+  }
+  body .input-container {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  .input-container .search {
+  body .input-container .search {
     height: 70px;
     margin-top: 35px;
   }
-
-  .card-container {
-    display: block;
+  body .card-container {
+    width: 400px;
   }
 }
 
