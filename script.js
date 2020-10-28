@@ -14,10 +14,15 @@ input.placeholder = 'Enter city name here...';
 inputContainer.appendChild(input);
 const searchBtn = document.createElement('button');
 searchBtn.classList.add('search');
-inputContainer.appendChild(searchBtn).textContent = 'Search';
+inputContainer.appendChild(searchBtn);
+const searchText = document.createElement('span');
+searchText.classList.add('search-text');
+searchBtn.appendChild(searchText).textContent = 'Search';
+const loader = document.createElement('span');
+searchBtn.appendChild(loader).innerHTML = '<i class="fas fa-spinner"></i>';
+loader.classList.add('loader');
 const array = [];
 const logo = document.createElement('img');
-
 
 
 
@@ -35,14 +40,14 @@ function getCityData(cityName) {
         })
         .catch((error) => {
             console.log(error);
-            return alert('Nothing found. Please check your city name'),
-                window.location.reload();
+            return alert('Nothing found. Please, check your city name.'),
+                window.location.reload('input');
         })
 };
 
 
 
-searchBtn.addEventListener('click', (event) => {
+searchBtn.addEventListener('click', (e) => {
     if (array.indexOf(input.value) === -1) {
         array.push(input.value);
         console.log(array);
@@ -52,6 +57,7 @@ searchBtn.addEventListener('click', (event) => {
     }
 });
 
+
 function showCityData(data) {
 
     const cityData = document.createElement('div');
@@ -59,14 +65,12 @@ function showCityData(data) {
     body.appendChild(cityData);
     const exiteBtn = document.createElement('button');
     exiteBtn.classList.add('exite');
-
-
     cityData.appendChild(exiteBtn).textContent = 'X';
 
     logo.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
 
     exiteBtn.addEventListener('click', (event) => {
-        return cityData.remove(),
+        return cityData.remove(), array.pop(),
             console.log('removed');
     });
 
@@ -80,3 +84,5 @@ function showCityData(data) {
     <p> <b>${Date()} </b></p>`)
 
 };
+
+
