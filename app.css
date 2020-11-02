@@ -110,6 +110,19 @@ body .card-container:hover {
   transition: ease-in-out 1s;
 }
 
+@media (max-width: 460px) {
+  body {
+    display: block;
+    align-items: center;
+    text-align: center;
+  }
+  body input {
+    width: 275px;
+  }
+  body .card-container {
+    text-align: left;
+  }
+}
 @media (max-width: 914px) {
   body {
     display: block;
@@ -126,7 +139,8 @@ body .card-container:hover {
     margin-top: 35px;
   }
   body .card-container {
-    width: 400px;
+    width: 280px;
+    text-align: left;
   }
 }
 @media (max-width: 1034px) {

@@ -32,16 +32,21 @@ function getCityData(cityName) {
     return fetch(`${url}&q=${cityName}`)
 
         .then((response) => {
-            return response.json();
+            if (response.ok) {
+                return response.json();
+            }
         })
         .then((json) => {
-            console.log(json)
-            return showCityData(json);
+            if (typeof json === 'undefined') {
+                return alert('Nothing found. Please, check your city name.');
+            } else {
+                console.log(json)
+                return showCityData(json), array.push(json.name);
+            }
         })
         .catch((error) => {
             console.log(error);
-            return alert('Nothing found. Please, check your city name.'),
-                window.location.reload('input');
+
         })
 };
 
@@ -55,7 +60,8 @@ searchBtn.addEventListener('click', (e) => {
     } else if (array.indexOf(input.value) >= 0) {
         return alert(`${input.value} is already added!`);
     }
-});
+}
+);
 
 
 function showCityData(data) {
@@ -77,12 +83,20 @@ function showCityData(data) {
     return cityData.insertAdjacentHTML('beforeend', `<img src="http://openweathermap.org/img/wn/${data.weather[0].icon}.png"></img>
     
     <h2>${data.name} ${data.sys.country}</h2>
-    <p> Temperature: ${data.main.temp} °C</p>
-    <p> Description: ${data.weather[0].description}</p>
-    <p> Humidity: ${data.main.humidity} %</p>
-    <p> Wind speed: ${data.wind.speed} m/s</p> 
+    <p> <i style='font-size: 20px', class="fas fa-thermometer-three-quarters"></i> TEMPERATURE: <b>${data.main.temp} °C </b></p>
+    <p> <i style='font-size: 20px', class="fas fa-tint"></i>  HUMIDITY: <b>${data.main.humidity} % </b></p> 
+    <p> <i style='font-size: 20px', class="fas fa-wind"></i>  WIND SPEED: <b> ${data.wind.speed} m/s </b></p> 
+    <p> DESCRIPTION: <b> ${data.weather[0].description} </b></p>
+    <hr>
     <p> <b>${Date()} </b></p>`)
 
 };
 
 
+input.addEventListener("keyup", (event) => {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        input.select();
+        searchBtn.click();
+    }
+});

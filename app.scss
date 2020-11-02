@@ -7,8 +7,8 @@ body {
     height: auto;
      
     .nav {
-        font-size: 12px;
-        text-shadow: rgb(226, 222, 222) 3px 3px;
+    font-size: 12px;
+    text-shadow: rgb(226, 222, 222) 3px 3px;
     position: sticky;
     border-bottom: 1px solid rgb(153, 187, 218);
     transition: all .4s;
@@ -23,11 +23,11 @@ body {
         }
 
         .input-container {
-      
         margin-top: 90px;
         margin-bottom: 90px;
         display: flex;
         justify-content: center;
+     
 
         input {
             font-size: 40px;
@@ -100,7 +100,7 @@ body {
         color: white;
         box-shadow: 5px 10px 10px 5px rgb(179, 177, 177);
         border-radius: 10px;
-
+      
       
 
        .exite {
@@ -130,8 +130,22 @@ body {
     
 }
 
-  
-
+@media (max-width: 460px) {
+      body {
+          display: block;
+          align-items: center;
+          text-align: center;
+        
+          input {    
+              width: 275px;
+          }
+          .card-container {
+                  text-align: left;
+    
+          }
+        
+     }
+    };
 
 @media (max-width: 914px) {
     body {
@@ -148,8 +162,9 @@ body {
             }
         }
         .card-container  {
-            width: 400px;
-           
+            width: 280px;
+            text-align: left;
+
         }
     }
 }
